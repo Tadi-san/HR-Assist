@@ -16,13 +16,35 @@
 * {
   scroll-behavior: smooth
 }
+/* body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+} */
 
 @layer base {
   body {
-    @apply font-sans bg-n-8 text-n-1 text-base;
+    @apply font-sans bg-n-8 text-n-1 text-base ;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; */
   }
 }
+@layer components {
+  .fully-center {
+    @apply flex items-center justify-center;
+  }
+  .stroke {
+    @apply border border-red-500;
+  }
 
+  .hideScrollBar::-webkit-scrollbar,
+  .hideScrollBar::-webkit-scrollbar-thumb {
+    display: none;
+  }
+}
 .rotate-45 {
   @apply rotate-[45deg]
 }

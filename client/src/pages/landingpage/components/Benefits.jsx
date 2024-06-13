@@ -7,14 +7,14 @@ import ClipPath from "../assets/svg/ClipPath";
 
 const Benefits = () => {
   return (
-    <Section id="features">
-      <div className="container relative z-2">
+    <Section id="features" >
+      <div className="container relative z-2 ">
         <Heading
           className="md:max-w-md lg:max-w-2xl"
-          title="Chat Smarter, Not Harder with Brainwave"
+          title="Hire Smarter, Not Harder with HR-Assist"
         />
 
-        <div className="flex flex-wrap justify-around gap-10 mb-10">
+        <div className="flex flex-wrap justify-around gap-10 mb-10 bg-transparent">
           {benefits.map((item) => (
             <div
               className="block relative p-0.5 bg-no-repeat bg-[length:100%_100%] md:max-w-[24rem]"
@@ -53,7 +53,7 @@ const Benefits = () => {
                       width={380}
                       height={362}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover "
                     />
                   )}
                 </div>

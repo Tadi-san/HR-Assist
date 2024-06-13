@@ -1,14 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
-
-import App from "./App.jsx";
-import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "@material-tailwind/react";
+import { MaterialTailwindControllerProvider } from "./pages/Dashboard/context/index";
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <BrowserRouter>
+      <ThemeProvider>
+        <MaterialTailwindControllerProvider>
+          <App />
+        </MaterialTailwindControllerProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

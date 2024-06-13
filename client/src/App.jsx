@@ -1,12 +1,16 @@
 import './App.css'
 import LandingPage from './pages/landingpage/landingPageLayout'
-import { BrowserRouter as Router } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Dashboard from './pages/Dashboard/layouts/dashboard'
+import Auth from './pages/Dashboard/layouts/auth'
 function App() {
   return (
-    <>
-      <LandingPage />
-    </>
-  )
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/auth/*" element={<Auth />} />
+        </Routes>
+    );
 }
 
 export default App
