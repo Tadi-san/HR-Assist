@@ -1,6 +1,9 @@
 <?php
     session_start();
-    
+    require_once "classes/Employer.php";
+    $cat1 = new Employer;
+    //$cats = $cat1->fetch_cat() ;
+    $states = $cat1->fetch_state() ;
 ?>
 
 
@@ -18,7 +21,11 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
     <style>
-
+/* .footer{
+    position: relative;
+    top: 0px;
+    bottom: 0px;
+} */
 
 
     </style>
@@ -30,7 +37,7 @@
     <div class="container">
         <div class="row navigation">
             <div class="col col-md-1">
-                <img src="images/logo.png" alt="my logo" class="img-fluid"><span><h4>Job Solutions</h1></span>
+                <img src="images/logo.png" style="width: 100px;" alt="my logo" class="img-fluid"><span><h4>Job Solutions</h1></span>
             </div>
             <div class="col col-md-3 ff">
                 
@@ -72,14 +79,15 @@
 
                         <div class="input-group mb-3">
                             <input name="password" type="password" id="password" class="form-control" placeholder="Enter Your Password"  aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary passbtn" type="button" id="button-addon2"><span class="fa-regular fa-eye"></span></button>
-                            <button class="btn btn-outline-secondary passbtn2" type="button" id="button-addon2" style="display: none;"><span class="fa-regular fa-eye-slash"></span></button>
+                            <button class="btn btn-outline-secondary passbtn" type="button" id="button-addon5"><span class="fa-regular fa-eye"></span></button>
+                            <button class="btn btn-outline-secondary passbtn2" type="button" id="button-addon6" style="display: none;"><span class="fa-regular fa-eye-slash"></span></button>
 
                           </div>
                           <p style="color: red;display: none;" id="paratwo" >Enter password</p>
 
                           <button name="login" value="login" type="button" class="btn btn-primary m-2" id="looginbtn">Login</button>
                     </form>
+                    <a href="forgetpasswordform.php">Forgot password</a>
                 </div>
             </div>
            </div>
@@ -106,7 +114,7 @@
                             <label for="pass1">Choose Password</label>
                             <div class="input-group mb-3">
                                 <input type="password" name="password" class="form-control" placeholder="Enter Your Password" id="pass1" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary passbtn" type="button" id="button-addon2"><span class="fa-regular fa-eye"></span></button>
+                                <button class="btn btn-outline-secondary passbtn" type="button" id="button-addon1"><span class="fa-regular fa-eye"></span></button>
                                 <button class="btn btn-outline-secondary passbtn2" type="button" id="button-addon2" style="display: none;"><span class="fa-regular fa-eye-slash"></span></button>
 
                               </div>
@@ -114,16 +122,24 @@
                               <label for="pass2">Confirm Password</label>
                               <div class="input-group mb-3">
                                 <input type="password" name="cpassword" class="form-control" id="pass2" placeholder="Enter Your Password" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <button class="btn btn-outline-secondary passbtn" type="button" id="button-addon2"><span class="fa-regular fa-eye"></span></button>
-                                <button class="btn btn-outline-secondary passbtn2" type="button" id="button-addon2" style="display: none;"><span class="fa-regular fa-eye-slash"></span></button>
+                                <button class="btn btn-outline-secondary passbtn" type="button" id="button-addon3"><span class="fa-regular fa-eye"></span></button>
+                                <button class="btn btn-outline-secondary passbtn2" type="button" id="button-addon4" style="display: none;"><span class="fa-regular fa-eye-slash"></span></button>
 
                               </div>      
                               <p style="color: red;display: none;" id="para6">password should be the same with confirm password</p>                     
                               <label for="date of birth">Date Of Birth</label>
                             <div class="row">
                                 <div class="col-4 mb-2">
-                                    <select name="year" id="select" class="form-select firsts">
+                                    <select name="year" id="year" class="form-select firsts">
                                         <option selected value="">choose year</option>
+                                        <?php
+                                        $d = date('Y');
+                                            for($i = ($d-18); $i >($d-65) ; $i--){
+                                        ?>
+                                        <option value="<?php echo $i ?>"><?php echo $i ?></option>
+                                        <?php 
+                                            }
+                                        ?>
                                     </select>
                                     <p style="color: red;display: none;" id="para7">select an option</p>
                                 
@@ -168,95 +184,20 @@
                                 <div class="col-4">
                                     <select name="states" id="state" class="form-select firsts3 mb-3" aria-label="Large select example">
                                         <option value="" >Choose your State</option>
-                                        <option value="1">Abia</option>
-                                        <option value="2">Adamawa</option>
-                                        <option value="3">Akwa-Ibom</option>
-                                        <option value="4">Anambra</option>
-                                        <option value="5">Bauchi</option>
-                                        <option value="6">Bayelsa</option>
-                                        <option value="7">Benue</option>
-                                        <option value="8">Borno</option>
-                                        <option value="9">Cross-River</option>
-                                        <option value="10">Delta</option>
-                                        <option value="11">Ebonyi</option>
-                                        <option value="12">Edo</option>
-                                        <option value="13">Ekiti</option>
-                                        <option value="14">Enugu</option>
-                                        <option value="15">Gombe</option>
-                                        <option value="16">Imo</option>
-                                        <option value="17">Jigawa</option>
-                                        <option value="18">Kaduna</option>
-                                        <option value="19">Kano</option>
-                                        <option value="20">Katsina</option>
-                                        <option value="21">Kebbi</option>
-                                        <option value="22">Kogi</option>
-                                        <option value="23">Kwara</option>
-                                        <option value="24">Lagos</option>
-                                        <option value="25">Nasarawa</option>
-                                        <option value="26">Niger</option>
-                                        <option value="27">Ogun</option>
-                                        <option value="28">Ondo</option>
-                                        <option value="29">Osun</option>
-                                        <option value="30">Oyo</option>
-                                        <option value="31">Plateau</option>
-                                        <option value="32">Rivers</option>
-                                        <option value="33">Sokoto</option>
-                                        <option value="34">Taraba</option>
-                                        <option value="35">Yobe</option>
-                                        <option value="36a">Zamfara</option>
-                                        <option value="37">Fedral-Capital-territory</option>
-                                        <option value="38">Foreign</option>
+                                        <?php 
+                                        foreach($states as $state){
+                                        ?>
+                                        <option value="<?php echo $state['state_id'] ?>"><?php echo $state['state_name'] ?></option>
+                                        <?php 
+                                        }
+                                        ?>
                                     </select>
                                     <p style="color: red;display: none;" id="para10">select an option</p>
                                 
                                 </div>
                                  </div>
-                            <button type="button"  class="btn btn-danger m-2" id="nextbtn">Next</button>
-                            
-                           </div>
-                           <div class="secondform">
-                            <button type="button" id="prevbtn" class="btn btn-outline-danger">Back</button>
-                            <h1>Work Information</h1>
-                               <div class="row">
-                                <div class="col">
-                                    <label for="qualification">Qualification</label>
-                                    <select name="qualification" id="qualification" class="form-select">
-                                        <option selected value="">Select Qualification</option>
-                                        <option value="olevel">O-Level / SSCE</option>
-                                        <option value="nce">NCE</option>
-                                        <option value="nd">National Diploma</option>
-                                        <option value="bsc">BSC(Bachelor In Science)</option>
-                                        <option value="msc">MSC(Master In Science)</option>
-                                        <option value="phd">PHD(Doctor In Philosophy)</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <label for="yearsofexperience">Years Of Experience</label>
-                                    <select name="yearsofexperience" id="yox" class="form-select">
-                                        <option selected>Select Years Of Experience</option>
-                                        <option value="below">Below one Year</option>
-                                        <option value="1">A Year</option>
-                                        
-                                    </select>
-                                </div>
-                               </div>
-                               <div class="row">
-                                <div class="col-md-6">
-                                    <label for="function1">Select Current Job Function</label>
-                                    <select name="function1" id="functionss" class="form-select">
-                                        <option value="" selected>Select Current</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="function2">Select Desired Job Function</label>
-                                    <select name="function2" id="functionsss" class="form-select">
-                                        <option value="" selected>Select Desired</option>
-                                    </select>
-                                </div>
-                               </div>
-                               <div class="row">
-                               
-                               </div>
+                           
+                           
                                <div class="row">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="agree" id="agree">
@@ -284,22 +225,12 @@
 
 
 
-        <div class="row" >
-            <h1>Other ways to contact us</h1>
-            <div class="col-md-6"  style="display: inline;">
-             <a href="#"><img src="icons/facebook.png" alt="facebooklink" class="img-fluid" style="width: 30px;"></a>
-             <a href="#"><img src="icons/instagram.png" alt="instagram link" class="img-fluid"  style="width: 30px;"></a>
-             <a href="#"><img src="icons/whatsapp.png" alt="whatsapp link" class="img-fluid"  style="width: 30px;"></a>
-            </div>
-           
-            <div class="col-12">
-             <p class=""> &copy;copyright 2024.All rights Reserved</p>
-            </div>
-            
-            </div>
+       
          </div>
         </div>
 
+
+       <?php require_once "partials/minfooter.php" ?>
     
 
 

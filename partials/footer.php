@@ -1,22 +1,8 @@
-<div class="row" id="contact" >
-           <h3>Other ways to contact us</h3>
-           <div class="col-md-6"  style="display: inline;">
-            <a href="#"><img src="icons/facebook.png" alt="facebooklink" class="img-fluid" style="width: 30px;"></a>
-            <a href="#"><img src="icons/instagram.png" alt="instagram link" class="img-fluid"  style="width: 30px;"></a>
-            <a href="#"><img src="icons/whatsapp.png" alt="whatsapp link" class="img-fluid"  style="width: 30px;"></a>
-           </div>
-          
-           <div class="col-12">
-            <p class=""> &copy;copyright 2024.All rights Reserved</p>
-           </div>
-           
-           </div>
-        </div>
-    </div>
-    
+
+    <?php  require_once "partials/minfooter.php"; ?>
 
 
-
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="jquery-3.7.1.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -31,6 +17,9 @@
             // $(".buttonspan").children("button").click(function(){
             //     $(".ff").children("div").slideToggle(1000);
             // })
+            $(".tanglebtn").click(function(){
+                $(this).siblings("ul").toggle(1000);
+            })
         })
     </script>
 </body>

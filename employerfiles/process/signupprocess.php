@@ -23,7 +23,7 @@ if($_POST['signup']){
         $_SESSION['useronline'] = $signup;
         header('location:../employerdashboard.php');
     }else{
-        $_SESSION['errormsg'] = 'Unable To signup Please try Again';
+        
         header('location:../../employer.php');
     }
 }else{

@@ -9,6 +9,7 @@
     require_once "../classes/Employer.php";
     $cat1 = new Employer;
     $cats = $cat1->fetch_cat() ;
+    $states = $cat1->fetch_state() ;
     $fetch = $cat1->selectVacancyById($id) ;
     //var_dump($fetch);
     require_once "partials/header.php";
@@ -17,7 +18,7 @@
   
      
       <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <h3 class="text-info">
                 Post a job
             </h3>
@@ -49,19 +50,35 @@
                         <option value="">Select Job Category</option>
                         <?php
                         foreach ($cats as $cat) {
-                            if($cat['jobCat_id'] == $fetch['jobCat_id']){
-                                ?>
-                                 <option selected value="<?php echo $cat['jobCat_id'] ?>"><?php echo $cat['jobCat_name'] ?></option>
-                                <?php
-                            }
+                           
                         ?>
                         
-                        <option value="<?php echo $cat['jobCat_id'] ?>"><?php echo $cat['jobCat_name'] ?></option>
+                        <option <?php echo $cat['jobCat_id'] == $fetch['jobCat_id'] ? "selected" : "";  ?> value="<?php echo $cat['jobCat_id'] ?>"><?php echo $cat['jobCat_name'] ?></option>
 
                         <?php
                         }
                         ?>
                     </select>
+                </div>
+                <div class="mb-3">
+                    <select name="states" id="state" class="form-select">
+                        <option value="">Select State</option>
+                        <?php
+                        foreach ($states as $state) {
+
+                        ?>
+                        <option <?php echo $state['state_id'] == $fetch['states_id'] ? "selected" : "" ?> value="<?php echo $state['state_id'] ?>"><?php echo $state['state_name'] ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div id="view"></div>
+                <div class="mb-3" id="lgadiv" style="display:none">
+                <label for="">Local Government Area</label>
+                        <select name="lga" id="lga" class="form-select">
+                           
+                        </select>
                 </div>
                 <div class="m-2">
                     <button type="submit" name="submit" value="submit" class="btn btn-primary">Post</button>
@@ -70,11 +87,59 @@
         </div>
       </div>
 
-    
-<?php
-    require_once "partials/footer.php";
+      <script src="../jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".ff").hover(function(){
+                $(this).children("div").slideToggle(100).siblings("a").children("span").toggleClass("fa-xmark")
+            })
+           
 
-?>
+            $(".passbtn").click(function(){
+           $(this).attr("type","button")
+           $(this).siblings().attr("type","text")
+           $(this).hide()
+           $(this).siblings("button").show()
+            })
+    $(".passbtn2").click(function(){
+           $(this).attr("type","button")
+           $(this).siblings().attr("type","password")
+           $(this).hide()
+           $(this).siblings("button").show()
+    
+            })
+            $("#state").change(function(){
+                var state_id = $("#state").val();
+                $.ajax({
+                    url: "process/ajaxserver.php",
+                    method: "post",
+                    data: state_id,
+                    dataType: "json",
+                    success: function(res){
+                        if(res.success==false){
+                            $("#view").show()
+                            $("#view").html("<div class='alert alert-danger'>"+res.message+"</div>")
+                            $("#lgadiv").hide();
+                        $("#lga").empty();
+                        }else{
+                            $("#view").hide()
+                        $("#lgadiv").show();
+                        $("#lga").empty();
+                      res.forEach(element => {
+                        $("#lga").append("<option value='"+element['lga_id']+"'>"+element['lga_name']+"</option>")
+                      });}
+                        
+                    },
+                })
+            })
+
+        })
+
+    </script>
+   
+    <script src="../bootstrap/js/bootstrap.js"></script>
+</body>
+</html>   
 
 
 

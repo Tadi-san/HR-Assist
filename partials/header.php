@@ -18,7 +18,9 @@
     <div class="container">
         <div class="row navigation">
             <div class="col-1 ">
-                <img id="logo" src="images/logo.png" alt="my logo" class="img-fluid">
+                <a href="index.php">
+                <img id="logo" src="images/logo.png" style="width: 100px;" alt="my logo" class="img-fluid">
+                </a>
             </div>
             <div class="col col-md-3 ff">
                 
@@ -46,4 +48,50 @@
             <div class="col col-md-3 lagin"><a href="login.php" style="color: rgb(32, 30, 30); text-decoration: none;">Create An Account | Login</a></div>
             <div class="col-2 buttonspan"><button class="mt-2"><span class="fa fa-bars "></span></button></div>
         </div>
-        
+
+
+        <nav class="navbar navbar-expand-lg bg-light d-md-none">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">
+                <img id="logo" src="images/logo.png" style="width: 100px;" alt="my logo" class="img-fluid">
+                </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item dropdown1">
+          <a class="nav-link tanglebtn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown1" aria-expanded="false">
+            Job Seekers
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="nav-link" href="login.php" style="border-bottom: 1px solid black;">Create an account</a>
+                </li>
+            <li><a class="nav-link" href="login.php" style="border-top: 1px solid black;border-bottom: 1px solid black">upload CV</a>
+                   </li>
+            <li> <a href="#jobcat" class="nav-link" style="border-top: 1px solid black">Job Vacancies</a></li>
+          
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link tanglebtn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Employers
+          </a>
+          <ul class="dropdown-menu">
+            <li> <a href="employer.php" style="border-bottom: 1px solid black;">Create an employer account</a>
+           </li>
+            <li><a href="#" style="border-top: 1px solid black;border-bottom: 1px solid black">Post Your Job Vacancies</a></li>
+            
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Disabled</a>
+        </li>
+      </ul>
+     
+    </div>
+  </div>
+</nav>

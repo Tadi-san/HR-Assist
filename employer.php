@@ -1,6 +1,6 @@
 <?php
 session_start();
- 
+// echo password_hash("11111111", PASSWORD_DEFAULT);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ session_start();
     <div class="container">
         <div class="row navigation">
             <div class="col col-md-1">
-                <img src="images/logo.png" alt="my logo" class="img-fluid"><span><h4>Job Solutions</h1></span>
+                <img src="images/logo.png" style="width: 100px;" alt="my logo" class="img-fluid"><span><h4>Job Solutions</h1></span>
             </div>
             <div class="col col-md-3 ff">
                 
@@ -53,14 +53,14 @@ session_start();
                     <a href="#contact" style="border-top: 1px solid black;border-bottom: 1px solid black">Contact Us</a>
                </div>
             </div>
-            <div class="col col-md-3 lagin"><a href="index.html" style="color: rgb(32, 30, 30); text-decoration: none;">Home page</a><a href="index.html">Home</a></div>
+            <div class="col col-md-3 lagin"><a href="index.php" style="color: rgb(32, 30, 30); text-decoration: none;">Home page</a><a href="index.php">Home</a></div>
             <div class="col-2 buttonspan"><button class="mt-2"><span class="fa fa-bars "></span></button></div>
         </div>
         <div style="border: 0.1px solid black; background-color: rgb(250, 251, 251); border-radius: 30px;">
             <h1 class="text-secondary" style="text-align: center;">Employer Section</h1>
             <?php if(isset($_SESSION['errormsg'])){
     echo '<div class="col-6 offset-3 alert alert-danger">'.$_SESSION['errormsg'].'</div>';
-    session_unset();
+    unset($_SESSION['errormsg']);
 } ?>
             <div class="col-12  login" >
 
@@ -83,6 +83,7 @@ session_start();
 
                           <button type="button" name="login" value="login" class="btn btn-primary m-2" id="looginbtn">Login</button>
                     </form>
+                    <a href="employerfiles/forgetpasswordform.php">Forgot Password</a>
                 </div>
             </div>
            </div>
@@ -194,6 +195,9 @@ session_start();
                 </div>
                 </div>
                 </div>
+                
+            
+            </div>
            </div>
 
 
@@ -207,7 +211,12 @@ session_start();
 
 
 
-        <div class="row" >
+        
+         </div>
+        </div>
+    <footer style="position: sticky-bottom;">
+          <div class="container">
+    <div class="row" >
             <h1>Other ways to contact us</h1>
             <div class="col-md-6"  style="display: inline;">
              <a href="#"><img src="icons/facebook.png" alt="facebooklink" class="img-fluid" style="width: 30px;"></a>
@@ -218,12 +227,9 @@ session_start();
             <div class="col-12">
              <p class=""> &copy;copyright 2024.All rights Reserved</p>
             </div>
-            
-            </div>
-         </div>
-        </div>
-
-    
+    </div>
+    </footer>
+  
 
 
         <script src="jquery-3.7.1.min.js"></script>

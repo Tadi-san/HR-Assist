@@ -9,7 +9,7 @@
         private $dbuser = DBUSER;
         private $dbpass = DBPASS;
 
-        protected $conn;
+        protected $con;
 
         protected function connect()
         {
@@ -19,8 +19,8 @@
             ];
 
             try {
-                $this->conn = new PDO($dsn,$this->dbuser, $this->dbpass,$option);
-                return $this->conn;
+                $this->con = new PDO($dsn,$this->dbuser, $this->dbpass,$option);
+                return $this->con;
             } catch (Exception $e) {
                 $e->getMessage();
                 return false;

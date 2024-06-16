@@ -33,6 +33,8 @@
             </div>
         </div>
         <div class="row"> -->
+            <div class="row"><div class="col-2"> <a href="viewapplications.php" class="btn btn-warning">Go Back</a></div>
+</div>
             <div class="col mt-5 card">
                 <div class="card-header">
                     <i class="fa fa-table"></i>
@@ -40,7 +42,7 @@
                         Applications
                     </h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table">
                         <thead>
                            <tr>
@@ -51,6 +53,9 @@
                                Name
                             </th>
                             <th>
+                                Match Requirements
+                            </th>
+                            <th>
                                 Action
                             </th>
                             
@@ -59,7 +64,31 @@
                         <tbody>
                             <?php
                             $n=1;
+                            if(!empty($fetchs)){
                             foreach ($fetchs as $fetch) {
+                                
+                                $reqs = $employer->fetch_requirements($fetch['jobVacancy_id']);
+                                if(!empty($reqs)){
+                                    $file = $fetch['application_CV'];
+                                    require "../vendor2/vendor/autoload.php";
+                                    // Parse PDF file and build necessary objects.
+                                    $parser = new \Smalot\PdfParser\Parser();
+                                    $pdf = $parser->parseFile("../applicationfiles/$file");
+                                   
+                                    
+                                    $text = $pdf->getText();
+                                    $text = strtolower($text);
+                                    $b = 1;
+                                    foreach($reqs as $req){
+                                      
+                                        $contains = stripos($text, $req['req_text']);
+                                     
+                                        if($contains){
+                                            $rate = $employer->add_rating($n, $fetch['application_id']);
+                                            $b++;
+                                        }
+                                    }
+                                }
                             ?>
                             <tr>
                                 <td>
@@ -68,7 +97,9 @@
                                 <td>
                                     <?php echo $fetch['jobSeeker_firstName']." ". $fetch['jobSeeker_lastName'] ?>
                                 </td>
-                               
+                               <td>
+                                <?php echo $fetch['application_rating'] ?>
+                               </td>
                                 <td>
                                     <form action="details.php" method="post">
                                         <input type="hidden" name="id" value="<?php echo $fetch['jobSeeker_id']?>">
@@ -78,6 +109,7 @@
                             </tr>
                             <?php
                             }
+                        }
                             ?>
                         </tbody>
                     </table>

@@ -13,7 +13,16 @@
         $state = sanitizer($_POST['states']);
         $gender = sanitizer($_POST['gender']);
         $password = sanitizer($_POST['cpassword']);
+
+        if(empty($firstname) || empty($lastname) || empty($email) || empty($number) || empty($DOB) || empty($state) || empty($gender) || empty($password)){
+            $_SESSION['errormsg'] = 'All Fields required';
+            header("location:../login.php");
+            exit();
+            die();
+
+        }
         $password = password_hash($password, PASSWORD_BCRYPT);
+
 
         require_once "../classes/User.php";
 
@@ -24,6 +33,8 @@
             
             $_SESSION['user_id']= $user_id;
             header("location:../employeepage.php");
+        }else{
+            header("location:../login.php");
         }
  
     }else{

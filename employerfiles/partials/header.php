@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <style>
+        #contact{
+            display: flex;
+            
+            
+        }
         .myoff ul li a{
             
             text-decoration: none;
@@ -22,6 +27,16 @@
             list-style-type: none;
             
 
+        }
+        @media all and (max-width: 999px){
+            .visible\@l{
+                display: none;
+            }
+        }
+        @media all and (min-width: 999px){
+            .hidden\@l{
+                display: none;
+            }
         }
         
     </style>
@@ -35,7 +50,7 @@
         
         <div class="row navigation">
             <div class="col col-md-1">
-                <img src="../images/logo.png" alt="my logo" class="img-fluid">
+                <img src="../images/logo.png" style="width: 100px;" alt="my logo" class="img-fluid">
             </div>
          
             <div class="col col-md-2 ff">
